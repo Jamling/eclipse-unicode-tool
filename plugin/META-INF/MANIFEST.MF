@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Unicodetool
+Bundle-SymbolicName: org.melord.pde.unicodetool; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: cn.ieclipse.pde.unicodetool.Activator
+Bundle-Vendor: melord.org
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.jface.text;bundle-version="3.5.0",
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.jdt.ui;bundle-version="3.5.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5,
+ OSGi/Minimum-1.0
+Bundle-ActivationPolicy: lazy

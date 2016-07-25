@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.melord.pde.unicodetool.popup.unicode">
+         <menu
+               label="Unicode Tool"
+               path="additions"
+               id="org.melord.pde.unicodetool.menu.popup.unicode">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Native to Ascii"
+               class="cn.ieclipse.pde.unicodetool.popup.actions.Native2AsciiAction"
+               menubarPath="org.melord.pde.unicodetool.menu.popup.unicode/group1"
+               id="org.melord.pde.unicodetool.action.native2ascii">
+         </action>
+         <action
+               class="cn.ieclipse.pde.unicodetool.popup.actions.Ascii2NativeAction"
+               id="org.melord.pde.unicodetool.action.ascii2native"
+               label="Ascii to Native"
+               menubarPath="org.melord.pde.unicodetool.menu.popup.unicode/group1">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="cn.ieclipse.pde.unicodetool.views.UnicodeView"
+            icon="icons/sample.gif"
+            id="org.melord.pde.unicodetool.views.UnicodeView"
+            name="Unicode View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="cn.ieclipse.pde.unicodetool.handlers.Native2AsciiHandler"
+            id="org.melord.pde.unicodetool.commands.native2ascii"
+            name="Native to Ascii">
+      </command>
+      <command
+            defaultHandler="cn.ieclipse.pde.unicodetool.handlers.Ascii2NativeHandler"
+            id="org.melord.pde.unicodetool.commands.ascii2native"
+            name="Ascii to Native">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="org.melord.pde.unicodetool.menus.sampleMenu"
+               label="Unicode Tool"
+               mnemonic="M">
+            <command
+                  commandId="org.melord.pde.unicodetool.commands.native2ascii"
+                  id="org.melord.pde.unicodetool.menus.command.native2ascii"
+                  mnemonic="N">
+            </command>
+            <command
+                  commandId="org.melord.pde.unicodetool.commands.ascii2native"
+                  id="org.melord.pde.unicodetool.menus.command.ascii2native"
+                  mnemonic="A">
+            </command>
+            <visibleWhen>
+               <iterate
+                     ifEmpty="false">
+                  <instanceof
+                        value="org.eclipse.jface.text.ITextSelection">
+                  </instanceof>
+               </iterate>
+            </visibleWhen>
+            <command
+                  commandId="org.eclipse.jdt.ui.edit.text.java.quick.format"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.jdt.ui.edit.text.java.format"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+
+</plugin>
